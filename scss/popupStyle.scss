@@ -1,0 +1,178 @@
+@import "_lib/bourbon/_bourbon";
+
+.form-popup {
+    font-family: "Open Sans";
+
+    @include position (fixed, 0 null null 0);
+    @include size (100% 100%);
+    @include transition (all 1s ease-in-out);
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+
+    &__overlay {
+        @include position (absolute, 0 null null 0);
+        @include size (100% 100%);
+        @include transition (all 1s ease-in-out);
+        background: rgba(0,0,0,0.9);
+        opacity: 0;
+    }
+
+    &__popup {
+        @include linear-gradient(to top, #e97d68, #e99b68);
+        @include position (absolute, 50% null null 50%);
+        @include transform (translateX(-50%) translateY(200%));
+        @include transition (all 1s ease-in-out);
+        //background: white;
+        padding: 3em 1em 1em 1em;
+        min-width: 300px;
+    }
+
+    &__title {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+        color: white;
+        margin: 1em 0;
+    }
+
+    &__body-text {
+        text-align: center;
+        color: white;
+        margin-bottom: 2em;
+        line-height: 1.5em;
+    }
+
+    &__thank-you, &__error {
+        text-align: center;
+        color: white;
+        margin-top: 1em;
+        line-height: 1.5em;
+    }
+
+    &__input {
+        display: block;
+        width: 100%;
+        height: 4em;
+        line-height: 2em;
+        font-size: 1em;
+        padding: 1em 1em;
+
+        resize: vertical;
+        outline: none;
+        border: none;
+
+        & + & {
+            margin-top: 0.2em;
+        }
+    }
+
+    textarea.form-popup__input {
+        height: auto;
+    }
+
+    &__send-button {
+        display: block;
+        background: #112e3c;
+        text-align: center;
+        cursor: pointer;
+        height: 4em;
+        line-height: 4em;
+        text-transform: uppercase;
+        color: white;
+        margin-top: 1em;
+        @include transition(0.3s ease-in-out);
+
+        &:hover {
+            background: #153341;
+        }
+    }
+
+    &__close-button {
+        @include position (absolute, 1em 1em null null);    
+        cursor: pointer;
+        font-weight: 600;
+        color: white;
+        @include transition(0.3s ease-in-out);
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    &.show {
+        opacity: 1;
+        pointer-events: all;
+
+        .form-popup__overlay {
+            opacity: 1;
+        }
+
+        .form-popup__popup {
+            @include transform(translateX(-50%) translateY(-50%));
+        }
+    }
+}
+
+.description-block {
+    @include display (flex);
+    @include justify-content (center);
+    @include align-items (center);
+    @include flex-wrap (wrap);
+
+    &__scanner {
+        width: 10em;
+        @include flex (1);
+        min-width: 300px;
+        max-width: 500px;
+    }
+
+    &__points {
+        @include flex (1);
+        min-width: 300px;
+        padding: 2em;
+        font-size: 1.2em;
+        max-width: 500px;
+    }
+
+    &__point {
+        line-height: 2em;
+        color: #2EC9D2;
+        font-weight: 600;
+        height: 2em;
+        margin: 1.5em 0;
+
+        img {
+            width: 1.4em;
+            margin-bottom: -0.25em;
+            margin-right: 1em;
+        }
+    }
+}
+
+.input-shake {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
