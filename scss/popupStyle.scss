@@ -124,25 +124,26 @@
 
     &__scanner {
         width: 10em;
-        @include flex (1);
+        @include flex (1 1 300px);
         min-width: 300px;
         max-width: 500px;
     }
 
     &__points {
-        @include flex (1);
-        min-width: 300px;
+        @include flex (1 1 400px);
+        min-width: 400px;
         padding: 2em;
         font-size: 1.2em;
         max-width: 500px;
     }
 
     &__point {
-        line-height: 2em;
+        line-height: 1.5em;
         color: #2EC9D2;
         font-weight: 600;
         height: 2em;
         margin: 1.5em 0;
+        @include display(flex);
 
         img {
             width: 1.4em;

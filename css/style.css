@@ -16,6 +16,7 @@ html {
 html * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* line-height: 1.5em; */
 }
 
 body {
@@ -116,6 +117,13 @@ Main Components
 @media only screen and (min-width: 768px) {
   .cd-pricing-list {
     margin: 3em 0 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
   }
   .cd-pricing-list:after {
     content: "";
@@ -127,7 +135,6 @@ Main Components
     float: left;
   }
   .cd-pricing-list > li::before {
-    /* separator between pricing tables - visible when number of tables > 3 */
     content: '';
     position: absolute;
     z-index: 6;
@@ -144,18 +151,16 @@ Main Components
     background-color: #b1d6e8;
   }
   .cd-pricing-list > li::after {
-    /* hide gradient layer */
     display: none;
   }
   .cd-pricing-list > li.cd-popular {
     box-shadow: inset 0 0 0 3px #e97d68;
   }
   .cd-pricing-list > li.cd-popular::before {
-    /* hide table separator for .cd-popular table */
     display: none;
   }
   .cd-pricing-list > li.cd-popular + li::before {
-    /* hide table separator for tables following .cd-popular table */
+     hide table separator for tables following .cd-popular table 
     display: none;
   }
   .cd-has-margins .cd-pricing-list > li, .cd-has-margins .cd-pricing-list > li.cd-popular {
@@ -165,15 +170,16 @@ Main Components
     background: #3aa0d1;
     background: -webkit-linear-gradient( bottom , #3aa0d1, #3ad2d1);
     background: linear-gradient(to top, #3aa0d1, #3ad2d1);
+    padding-bottom: 4em;
   }
   .cd-secondary-theme .cd-pricing-list > li.cd-popular {
     background: #e97d68;
     background: -webkit-linear-gradient( bottom , #e97d68, #e99b68);
     background: linear-gradient(to top, #e97d68, #e99b68);
     box-shadow: none;
+    position: relative;
   }
   .cd-pricing-list:nth-of-type(1)::before {
-    /* hide table separator for the first table */
     display: none;
   }
   .cd-has-margins .cd-pricing-list > li {
@@ -301,7 +307,19 @@ Main Components
 }
 
 .cd-pricing-features {
-  width: 600px;
+  /* width: 600px; */
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1em 0;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-direction: column;
 }
 .cd-pricing-features:after {
   content: "";
@@ -309,17 +327,19 @@ Main Components
   clear: both;
 }
 .cd-pricing-features li {
-  width: 100px;
+  /* width: 100px; */
   float: left;
-  padding: 1.6em 1em;
+  padding: 0.5em 1em;
   font-size: 1.4rem;
-  text-align: center;
-  white-space: nowrap;
+  line-height: 1.5em;
+  text-align: left;
+  /* white-space: nowrap; */
   overflow: hidden;
+  line-height: 1.5em;
   text-overflow: ellipsis;
 }
 .cd-pricing-features em {
-  display: block;
+  /* display: block; */
   margin-bottom: 5px;
   font-weight: 600;
 }
@@ -357,8 +377,7 @@ Main Components
   position: absolute;
   z-index: 1;
   top: 0;
-  left: 0;
-  /* on mobile it covers the .cd-pricing-header */
+  left: 0;/* on mobile it covers the .cd-pricing-header */
   height: 80px;
   width: 100%;
 }
@@ -380,9 +399,13 @@ Main Components
 }
 @media only screen and (min-width: 768px) {
   .cd-pricing-footer {
-    position: relative;
-    height: auto;
+    position: absolute;
+    left: 0;
+    bottom: 1em;
+    /* height: auto; */
+    display: inline-block;
     padding: 1.8em 0;
+    top: initial;
     text-align: center;
   }
   .cd-pricing-footer::after {
@@ -398,8 +421,8 @@ Main Components
   position: relative;
   z-index: 1;
   display: block;
-  height: 100%;
-  /* hide button text on mobile */
+  top: 0;
+  height: 100%;/* hide button text on mobile */
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
